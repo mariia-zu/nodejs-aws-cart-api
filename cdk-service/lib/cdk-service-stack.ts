@@ -16,7 +16,13 @@ export class CdkServiceStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const environment = {};
+    const environment = {
+      DB_HOST: process.env.DB_HOST!,
+      DB_PORT: process.env.DB_PORT!,
+      DB_USER: process.env.DB_USER!,
+      DB_PASSWORD: process.env.DB_PASSWORD!,
+      DB_NAME: process.env.DB_NAME!,
+    };
 
     const cartApiLambda = new Function(this, 'cartApiLambdaFunction', {
       runtime: Runtime.NODEJS_22_X,

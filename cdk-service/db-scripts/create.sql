@@ -9,9 +9,10 @@ create table carts(
 )
 
 create table cart_items(
-	product_id uuid primary key,
+	product_id uuid not null,
 	cart_id uuid not null,
 	count integer not null check (count > 0),
+	primary key (product_id, cart_id),
 	foreign key (cart_id) references carts(id) on delete cascade
 )
 
