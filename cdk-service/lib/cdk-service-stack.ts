@@ -9,8 +9,9 @@ import {
 } from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 import { config } from 'dotenv';
+import * as path from 'path';
 
-config();
+config({ path: path.join(__dirname, '../../.env') });
 
 export class CdkServiceStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
