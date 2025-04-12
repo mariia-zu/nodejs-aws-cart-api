@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build rest",
-    "build:aws": "nest build aws ",
+    "build:aws": "nest build aws",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start rest --watch",
@@ -20,7 +20,9 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "deploy": "npm run build:aws",
-    "postdeploy": "cd ./cdk-service && npm run deploy"
+    "postdeploy": "cd ./cdk-service && npm run deploy",
+    "build:docker": "docker build -t cart-service",
+    "run:docker": "docker run -p 4000:4000 --env-file .env cart-service"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.3",
