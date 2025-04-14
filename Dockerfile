@@ -5,27 +5,20 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm ci && npm cache clean --force
 
 COPY . .
 
-RUN npm run build:aws
+RUN npm run build:prod
 
 # Production stage
 FROM node:20-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
-
-RUN npm ci --only=production
-
 COPY --from=builder /app/dist ./dist
 
-COPY .env .env
-
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-USER appuser
+USER node
 
 EXPOSE 4000
 

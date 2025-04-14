@@ -5,10 +5,10 @@
     "deleteOutDir": true
   },
   "projects": {
-    "aws": {
+    "dev": {
       "type": "application",
       "root": "./",
-      "entryFile": "lambda",
+      "entryFile": "main",
       "sourceRoot": "src",
       "compilerOptions": {
         "tsConfigPath": "./tsconfig.build.json",
@@ -16,13 +16,15 @@
         "webpackConfigPath": "webpack.config.js"
       }
     },
-    "rest": {
+    "prod": {
       "type": "application",
       "root": "./",
       "entryFile": "main",
       "sourceRoot": "src",
       "compilerOptions": {
-        "tsConfigPath": "./tsconfig.build.json"
+        "tsConfigPath": "./tsconfig.prod.json",
+        "webpack": true,
+        "webpackConfigPath": "webpack.config.js"
       }
     }
   }
