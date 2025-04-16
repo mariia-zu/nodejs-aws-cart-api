@@ -30,7 +30,7 @@ export class CartService implements ICartService {
   }
 
   async findOrCreateByUserId(userId: string): Promise<Cart> {
-    const userCart = this.findByUserId(userId);
+    const userCart = await this.findByUserId(userId);
 
     if (userCart) {
       return userCart;
