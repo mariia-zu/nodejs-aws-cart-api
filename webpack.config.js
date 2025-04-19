@@ -1,11 +1,11 @@
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/lambda.ts',
+  entry: './src/main.ts',
   target: 'node',
   externals: [],
   output: {
-    filename: 'lambda.js',
+    filename: 'main.js',
     libraryTarget: 'commonjs2',
     library: {
       type: 'commonjs2',
@@ -18,7 +18,7 @@ module.exports = {
         use: {
           loader: 'ts-loader',
           options: {
-            configFile: 'tsconfig.aws.json',
+            configFile: 'tsconfig.prod.json',
           },
         },
       },
@@ -46,4 +46,7 @@ module.exports = {
       },
     }),
   ],
+  optimization: {
+    minimize: true,
+  },
 };
